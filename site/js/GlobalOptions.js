@@ -10,7 +10,7 @@ var customGetUrlParamsParser = null;
 //Servername (optional) and path and name name of QGIS Server FCGI-file
 //either with or without server-name - without servername recommended for easier porting to other servers
 //do not add a ? or & after the .fcgi extension
-var serverAndCGI = "/cgi-bin/qgis_mapserv.fcgi";
+var serverAndCGI = "/wms";
 
 //Optional url for print server hosted on a different server. Default: same as above.
 // var serverAndCGI = "http://otherserver/cgi-bin/qgis_mapserv.fcgi";
@@ -22,7 +22,7 @@ var printServer = serverAndCGI;
 var useGetProjectSettings = true;
 
 // show the layerOrderTab in the GUI
-var showLayerOrderTab = true;
+var showLayerOrderTab = false;
 
 // show layername in layerTree in gray when layer is outside visible scale
 var grayLayerNameWhenOutsideScale = true;
@@ -82,11 +82,11 @@ if (enableBingCommercialMaps) {
     var bingApiKey = "add Bing api key here"; // http://msdn.microsoft.com/en-us/library/ff428642.aspx
 }
 
-var enableGoogleCommercialMaps = true;
+var enableGoogleCommercialMaps = false;
 
 var enableOSMMaps = true;
 
-var enableBGMaps = false;
+var enableBGMaps = true;
 if (enableBingCommercialMaps || enableOSMMaps || enableGoogleCommercialMaps) {
 	enableBGMaps = true;
 }
@@ -236,7 +236,7 @@ var mapThemeSwitcherActive = true;
 var themeSwitcherTemplate = null;
 
 //first part of titlebar text
-var titleBarText = "GIS-Browser - "; // will be appended with project title
+var titleBarText = ""; // will be appended with project title
 
 // header logo image and link
 var headerLogoImg = null; // path to image, set null for no logo
@@ -246,7 +246,7 @@ var headerTermsOfUseText = null; // set null for no link
 var headerTermsOfUseLink = ""; // URL to terms of use
 
 //language switcher in qgiswebclient.html
-var enableLangSwitcher = true;
+var enableLangSwitcher = false;
 
 // optional project title per map name
 var projectTitles = {
@@ -325,10 +325,13 @@ if (enableOSMMaps) {
   overviewLayer = new OpenLayers.Layer.OSM();
 }
 else {
-  overviewLayer = new OpenLayers.Layer.WMS("Overview-Map",
-  serverAndCGI+"?map=/home/web/qgis-web-client/projects/naturalearth_110million.qgs",
-  {layers:"Land",format:"image/png"},
-  {buffer:0,singleTile:true,transitionEffect:"resize"});
+var overviewLayer = new OpenLayers.Layer.XYZ("Mapbox",
+    ["http://a.tiles.mapbox.com/v4/reinier.map-6x4cbjrs/${z}/${x}/${y}.png?access_token=pk.eyJ1IjoicmVpbmllciIsImEiOiJYTHBYeW9jIn0.vhzQp9gepxVOTgRrjWMW8A"], {
+    sphericalMercator: true,
+    wrapDateLine: true,
+    numZoomLevels: 15
+});
+  
 }
 
 // prevent the user from choosing a print resolution

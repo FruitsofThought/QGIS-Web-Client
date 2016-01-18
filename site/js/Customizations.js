@@ -49,6 +49,58 @@ function customBeforeMapInit() {
 //
 //  add the layer to the array of background layers
 //  baseLayers.push(myBackgroundLayer); 
+  
+
+// mapbox is not added yet
+// 4 is the default OSM layers
+  if (baseLayers.length < 5) {
+  
+  var myBackgroundLayer = new OpenLayers.Layer.XYZ("Mapbox Street",
+    ["http://a.tiles.mapbox.com/v4/reinier.map-6x4cbjrs/${z}/${x}/${y}.png?access_token=pk.eyJ1IjoicmVpbmllciIsImEiOiJYTHBYeW9jIn0.vhzQp9gepxVOTgRrjWMW8A"], {
+    sphericalMercator: true,
+    wrapDateLine: true,
+    isBaseLayer: true,
+});
+baseLayers.push(myBackgroundLayer);
+  var myBackgroundLayer = new OpenLayers.Layer.XYZ("Mapbox Natural",
+    ["http://a.tiles.mapbox.com/v4/reinier.map-6x4cbjrs/${z}/${x}/${y}.png?access_token=pk.eyJ1IjoicmVpbmllciIsImEiOiJYTHBYeW9jIn0.vhzQp9gepxVOTgRrjWMW8A"], {
+    sphericalMercator: true,
+    wrapDateLine: true,
+    isBaseLayer: true,
+});
+baseLayers.push(myBackgroundLayer);
+
+var myBackgroundLayer = new OpenLayers.Layer.XYZ("Mapbox Light",
+    ["https://a.tiles.mapbox.com/v4/reinier.onp8chek/${z}/${x}/${y}.png?access_token=pk.eyJ1IjoicmVpbmllciIsImEiOiJYTHBYeW9jIn0.vhzQp9gepxVOTgRrjWMW8A"], {
+    sphericalMercator: true,
+    wrapDateLine: true,
+    isBaseLayer: true,
+});
+baseLayers.push(myBackgroundLayer);
+var myBackgroundLayer = new OpenLayers.Layer.XYZ("Mapbox High Contrast",
+    ["https://a.tiles.mapbox.com/v4/reinier.onp8chek/${z}/${x}/${y}.png?access_token=pk.eyJ1IjoicmVpbmllciIsImEiOiJYTHBYeW9jIn0.vhzQp9gepxVOTgRrjWMW8A"], {
+    sphericalMercator: true,
+    wrapDateLine: true,
+    isBaseLayer: true,
+});
+baseLayers.push(myBackgroundLayer);
+  var myBackgroundLayer = new OpenLayers.Layer.XYZ("Mapbox Pirates!",
+    ["https://a.tiles.mapbox.com/v4/reinier.onp8ndmf/${z}/${x}/${y}.png?access_token=pk.eyJ1IjoicmVpbmllciIsImEiOiJYTHBYeW9jIn0.vhzQp9gepxVOTgRrjWMW8A"], {
+    sphericalMercator: true,
+    wrapDateLine: true,
+    isBaseLayer: true,
+});
+baseLayers.push(myBackgroundLayer);
+
+//baseLayers.splice('MapQuest-OSM Tiles',1);
+// Remove MapQuest layers
+baseLayers.splice(1,1);
+baseLayers.splice(2,1);
+
+//unset(baseLayers['
+
+  }
+
 }
 
 // called after map initialization

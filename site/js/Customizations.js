@@ -76,7 +76,7 @@ var myBackgroundLayer = new OpenLayers.Layer.XYZ("Mapbox Light",
     wrapDateLine: true,
     isBaseLayer: true,
 });
-baseLayers.push(myBackgroundLayer);
+baseLayers.unshift(myBackgroundLayer);
 var myBackgroundLayer = new OpenLayers.Layer.XYZ("Mapbox High Contrast",
     ["https://a.tiles.mapbox.com/v4/reinier.onp8chek/${z}/${x}/${y}.png?access_token=pk.eyJ1IjoicmVpbmllciIsImEiOiJYTHBYeW9jIn0.vhzQp9gepxVOTgRrjWMW8A"], {
     sphericalMercator: true,

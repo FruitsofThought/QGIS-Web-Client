@@ -113,10 +113,12 @@ baseLayers.push(myBackgroundLayer);
   mappath += "/wms/NgamboHistoric";
 
   maps = [
+    "1987 Zanzibar Plan",
     "1973 Post Revolution Developments",
     "1960 Land Surveys Zanzibar",
     "1927 Zanzibar City Survey",
     "1897 Baumann",
+    "1892 Plan of Zanzibar",
     "1846 Guillain"
   ];
   

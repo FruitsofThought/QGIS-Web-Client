@@ -1,5 +1,5 @@
 var gis_projects = {
- "path": "",
+ "path": "/maps",
  "mapserver": "/wms/",
  "thumbnails": "/thumbnails",
  "title": "Ng'ambo Project",

@@ -4,24 +4,24 @@ function customInit() {
 //     // I create a new control click event class
 //     OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
 //         defaultHandlerOptions: {
-//                 'single': true,
-//                 'double': false,
-//                 'pixelTolerance': 0,
-//                 'stopSingle': false,
-//                 'stopDouble': false
+//   'single': true,
+//   'double': false,
+//   'pixelTolerance': 0,
+//   'stopSingle': false,
+//   'stopDouble': false
 //         },
 //         initialize: function(options) {
-//                 this.handlerOptions = OpenLayers.Util.extend(
-//                         {}, this.defaultHandlerOptions
-//                 );
-//                 OpenLayers.Control.prototype.initialize.apply(
-//                         this, arguments
-//                 );
-//                 this.handler = new OpenLayers.Handler.Click(
-//                         this, {
-//                                 'click': this.trigger
-//                         }, this.handlerOptions
-//                 );
+//   this.handlerOptions = OpenLayers.Util.extend(
+//           {}, this.defaultHandlerOptions
+//   );
+//   OpenLayers.Control.prototype.initialize.apply(
+//           this, arguments
+//   );
+//   this.handler = new OpenLayers.Handler.Click(
+//           this, {
+//     'click': this.trigger
+//           }, this.handlerOptions
+//   );
 //         }
 //     });
 }
@@ -91,6 +91,50 @@ baseLayers.push(myBackgroundLayer);
     isBaseLayer: true,
 });
 baseLayers.push(myBackgroundLayer);
+
+
+baseLayers.push(myBackgroundLayer);
+  var myBackgroundLayer = new OpenLayers.Layer.WMS("Historic map",
+    ["https://a.tiles.mapbox.com/v4/reinier.onp8ndmf/${z}/${x}/${y}.png?access_token=pk.eyJ1IjoicmVpbmllciIsImEiOiJYTHBYeW9jIn0.vhzQp9gepxVOTgRrjWMW8A"], {
+    sphericalMercator: true,
+    wrapDateLine: true,
+    isBaseLayer: true,
+});
+
+// Path to map
+  var servername = location.href.split(/\/+/)[1];
+  mappath = "http://"+servername;
+  if (gis_projects) {
+ //  mappath += gis_projects.path + "/";
+  }
+  else {
+   mappath += "/";
+  }
+  mappath += "/wms/NgamboHistoric";
+
+  maps = [
+    "1973 Post Revolution Developments",
+    "1960 Land Surveys Zanzibar",
+    "1927 Zanzibar City Survey",
+    "1897 Baumann",
+    "1846 Guillain"
+  ];
+  
+  maps.forEach(function(addmap) {
+    myBackgroundLayer =  new OpenLayers.Layer.WMS(addmap,
+      mappath, {
+        layers: addmap,
+        //opacities: layerOpacities(selectedLayers),
+        format: "image/jpg",
+        styles: "Black And White Print",
+        //transparent: qgisLayerTransparency,
+        //dpi: screenDpi,
+        VERSION: "1.3.0"
+      },
+      LayerOptions
+    );
+    baseLayers.push(myBackgroundLayer);
+  });
 
 //baseLayers.splice('MapQuest-OSM Tiles',1);
 // Remove MapQuest layers

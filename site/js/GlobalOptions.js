@@ -68,7 +68,7 @@ var project_map = Ext.urlDecode(window.location.search.substring(1)).map;
 //control if DXF export is globally enabled
 //note that DXF export needs a recent QGIS server equal or younger to https://github.com/qgis/QGIS/commit/4e7efd669de21f58adcf32be21df4ac510a67c3a (2015-07)
 //other settings can/should be set in the file GISProjectListing.js
-var enableDXFExport = true;
+var enableDXFExport = false;
 
 // show the permalink button
 var enablePermalink = true;
@@ -94,7 +94,7 @@ if (enableBGMaps) {
 	// enter the index of the backgroundLayer to be visible after loading,
 	// set to a value < 0 to not show any backgroundLayer
 	// this setting is overridden if a value for url-parameter visibleBackgroundLayer is passed
-	var initialBGMap = 0;
+	var initialBGMap = -1;
 }
 
 // enable to use WMTS base layers

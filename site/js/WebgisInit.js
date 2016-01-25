@@ -2013,7 +2013,9 @@ function mapToolbarHandler(btn, evt) {
 			});
 		}
 		else {
-			openPermaLink(encodeURIComponent(permalink));
+         // alert(encodeURIComponent(permalink));
+          location.href = permalink;
+	//		openPermaLink(encodeURIComponent(permalink));
 		}
 	}
   if (btn.id == "ShowHelp") {

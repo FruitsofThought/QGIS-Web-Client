@@ -2014,7 +2014,8 @@ function mapToolbarHandler(btn, evt) {
 		}
 		else {
          // alert(encodeURIComponent(permalink));
-          location.href = permalink;
+//          location.href = permalink;
+            history.replaceState(null, null, permalink);
 	//		openPermaLink(encodeURIComponent(permalink));
 		}
 	}

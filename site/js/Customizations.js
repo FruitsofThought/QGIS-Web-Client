@@ -230,6 +230,8 @@ function customActionLayerTreeCheck(n) {
 function customActionOnZoomEvent() {
 	// NOTE: if you define customActionOnMoveEvent() (see below)
 	// that function is called during zooms, too!
+var permalink = createPermalink();
+history.replaceState(null, null, permalink);
 
 	// ... action to do on call
 }
@@ -237,4 +239,6 @@ function customActionOnZoomEvent() {
 // called after a drag, pan, or zoom completed
 function customActionOnMoveEvent() {
 	// ... action to do on call
+var permalink = createPermalink();
+history.replaceState(null, null, permalink);
 }

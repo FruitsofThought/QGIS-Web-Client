@@ -35,7 +35,7 @@
             foreach(glob($PROJECTS_DIR.'*.qgs') as $file) {
                 $filename = substr($file, 0, -4);
                 $filename = end(explode('/', $filename));
-                print "<li class='map-item'><a href='maps/$filename'>$filename</a></li>\n";
+                print "<li class='map-item'><a href='/maps/$filename'>$filename</a></li>\n";
             }
             ?>
           </ul>
@@ -55,5 +55,21 @@
         </div>
       </div>
     </div>
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["setDomains", ["*.qgisweb.mappingday.com","*.qgisweb.mountbatten.nl"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//piwik.mountbatten.net/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 34]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//piwik.mountbatten.net/piwik.php?idsite=34" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
   </body>
 </html>

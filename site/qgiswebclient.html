@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="css/ThemeSwitcherDataView.css" />
 	<link rel="stylesheet" type="text/css" href="css/popup.css" /> 
 	<link rel="stylesheet" type="text/css" href="css/layerOrderTab.css" />
-    <script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
+<!-- Only if we would use google    <script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script> -->
 <!--
 	<script type="text/javascript" src="libs/ext/adapter/ext/ext-base.js"></script>
 -->
@@ -87,5 +87,21 @@ h4.DXFExportDisclaimer {
 <body>
 <!-- this empty div is used for dpi-detection - do not remove it -->
 <div id="dpiDetection"></div>
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["setDomains", ["*.qgisweb.mappingday.com","*.qgisweb.mountbatten.nl"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//piwik.mountbatten.net/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 34]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//piwik.mountbatten.net/piwik.php?idsite=34" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
 </body>
 </html>

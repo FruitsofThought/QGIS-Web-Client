@@ -144,6 +144,27 @@ function customBeforeMapInit() {
   else {
     // Make Mapbox Light the basemap
     initialBGMap = 0;
+
+     
+/*       var myBackgroundLayer = new OpenLayers.Layer.XYZ("Mapbox Pirates!",
+         ["https://a.tiles.mapbox.com/v4/reinier.onp8ndmf/${z}/${x}/${y}.png?access_token=pk.eyJ1IjoicmVpbmllciIsImEiOiJYTHBYeW9jIn0.vhzQp9gepxVOTgRrjWMW8A"], {
+           sphericalMercator: true,
+           wrapDateLine: true,
+           isBaseLayer: true,
+         });
+       baseLayers.push(myBackgroundLayer);
+*/
+
+//http://www.chartae-antiquae.cz/mapserver/3D/WmsZoomify.php?SERVICE=WMS&REQUEST=GetMap&VERSION=1.1.1&LAYERS=5604&STYLES=&FORMAT=image%2Fjpeg&TRANSPARENT=false&HEIGHT=256&WIDTH=256&SRS=EPSG%3A3857&BBOX=545454.6338430177,6865879.628687669,546677.6262955805,6867102.621140235
+       var myBackgroundLayer = new OpenLayers.Layer.WMS("Historic Map",'http://www.chartae-antiquae.cz/mapserver/3D/WmsZoomify.php?', {
+          layers: '5604',
+          format: 'image/jpeg',
+//          transparent: true,
+          VERSION: "1.1.1",
+          isBaseLayer: true,
+         });
+       baseLayers.push(myBackgroundLayer);
+          
   }
   // Remove MapQuest layers
 //  baseLayers.splice(1,1);

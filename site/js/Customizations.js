@@ -52,92 +52,105 @@ function customBeforeMapInit() {
   
 
 // mapbox is not added yet
-// 4 is the default OSM layers
+// 4 is the default OSM layers, so only add if not added yet
   if (baseLayers.length < 5) {
   
-  var myBackgroundLayer = new OpenLayers.Layer.XYZ("Mapbox Street",
-    ["http://a.tiles.mapbox.com/v4/reinier.map-6x4cbjrs/${z}/${x}/${y}.png?access_token=pk.eyJ1IjoicmVpbmllciIsImEiOiJYTHBYeW9jIn0.vhzQp9gepxVOTgRrjWMW8A"], {
-    sphericalMercator: true,
-    wrapDateLine: true,
-    isBaseLayer: true,
-});
-baseLayers.push(myBackgroundLayer);
-  var myBackgroundLayer = new OpenLayers.Layer.XYZ("Mapbox Natural",
-    ["http://a.tiles.mapbox.com/v4/reinier.map-6x4cbjrs/${z}/${x}/${y}.png?access_token=pk.eyJ1IjoicmVpbmllciIsImEiOiJYTHBYeW9jIn0.vhzQp9gepxVOTgRrjWMW8A"], {
-    sphericalMercator: true,
-    wrapDateLine: true,
-    isBaseLayer: true,
-});
-baseLayers.push(myBackgroundLayer);
+    var myBackgroundLayer = new OpenLayers.Layer.XYZ("Mapbox Street",
+      ["http://a.tiles.mapbox.com/v4/reinier.map-6x4cbjrs/${z}/${x}/${y}.png?access_token=pk.eyJ1IjoicmVpbmllciIsImEiOiJYTHBYeW9jIn0.vhzQp9gepxVOTgRrjWMW8A"], {
+        sphericalMercator: true,
+        wrapDateLine: true,
+        isBaseLayer: true,
+      });
+     baseLayers.push(myBackgroundLayer);
+     var myBackgroundLayer = new OpenLayers.Layer.XYZ("Mapbox Natural",
+        ["http://a.tiles.mapbox.com/v4/reinier.map-6x4cbjrs/${z}/${x}/${y}.png?access_token=pk.eyJ1IjoicmVpbmllciIsImEiOiJYTHBYeW9jIn0.vhzQp9gepxVOTgRrjWMW8A"], {
+          sphericalMercator: true,
+          wrapDateLine: true,
+          isBaseLayer: true,
+        });
+     baseLayers.push(myBackgroundLayer);
 
-var myBackgroundLayer = new OpenLayers.Layer.XYZ("Mapbox Light",
-    ["https://a.tiles.mapbox.com/v4/reinier.p05mb3l5/${z}/${x}/${y}.png?access_token=pk.eyJ1IjoicmVpbmllciIsImEiOiJYTHBYeW9jIn0.vhzQp9gepxVOTgRrjWMW8A"], {
-    sphericalMercator: true,
-    wrapDateLine: true,
-    isBaseLayer: true,
-});
-baseLayers.unshift(myBackgroundLayer);
-var myBackgroundLayer = new OpenLayers.Layer.XYZ("Mapbox High Contrast",
-    ["https://a.tiles.mapbox.com/v4/reinier.onp8chek/${z}/${x}/${y}.png?access_token=pk.eyJ1IjoicmVpbmllciIsImEiOiJYTHBYeW9jIn0.vhzQp9gepxVOTgRrjWMW8A"], {
-    sphericalMercator: true,
-    wrapDateLine: true,
-    isBaseLayer: true,
-});
-baseLayers.push(myBackgroundLayer);
-  var myBackgroundLayer = new OpenLayers.Layer.XYZ("Mapbox Pirates!",
-    ["https://a.tiles.mapbox.com/v4/reinier.onp8ndmf/${z}/${x}/${y}.png?access_token=pk.eyJ1IjoicmVpbmllciIsImEiOiJYTHBYeW9jIn0.vhzQp9gepxVOTgRrjWMW8A"], {
-    sphericalMercator: true,
-    wrapDateLine: true,
-    isBaseLayer: true,
-});
-baseLayers.push(myBackgroundLayer);
+     var myBackgroundLayer = new OpenLayers.Layer.XYZ("Mapbox Light",
+       ["https://a.tiles.mapbox.com/v4/reinier.p05mb3l5/${z}/${x}/${y}.png?access_token=pk.eyJ1IjoicmVpbmllciIsImEiOiJYTHBYeW9jIn0.vhzQp9gepxVOTgRrjWMW8A"], {
+         sphericalMercator: true,
+         wrapDateLine: true,
+         isBaseLayer: true,
+      });
+      baseLayers.unshift(myBackgroundLayer);
 
-// Path to map
-  var servername = location.href.split(/\/+/)[1];
-  mappath = "http://"+servername;
-  if (gis_projects) {
- //  mappath += gis_projects.path + "/";
-  }
-  else {
-   mappath += "/";
-  }
-  mappath += "/wms/NgamboHistoric";
+      var myBackgroundLayer = new OpenLayers.Layer.XYZ("Mapbox High Contrast",
+        ["https://a.tiles.mapbox.com/v4/reinier.onp8chek/${z}/${x}/${y}.png?access_token=pk.eyJ1IjoicmVpbmllciIsImEiOiJYTHBYeW9jIn0.vhzQp9gepxVOTgRrjWMW8A"], {
+          sphericalMercator: true,
+          wrapDateLine: true,
+          isBaseLayer: true,
+       });
+       baseLayers.push(myBackgroundLayer);
+     
+       var myBackgroundLayer = new OpenLayers.Layer.XYZ("Mapbox Pirates!",
+         ["https://a.tiles.mapbox.com/v4/reinier.onp8ndmf/${z}/${x}/${y}.png?access_token=pk.eyJ1IjoicmVpbmllciIsImEiOiJYTHBYeW9jIn0.vhzQp9gepxVOTgRrjWMW8A"], {
+           sphericalMercator: true,
+           wrapDateLine: true,
+           isBaseLayer: true,
+         });
+       baseLayers.push(myBackgroundLayer);
 
-  maps = [
-    "1987 Zanzibar Plan",
-    "1973 Post Revolution Developments",
-    "1960 Land Surveys Zanzibar",
-    "1927 Zanzibar City Survey",
-    "1897 Baumann",
-    "1892 Plan of Zanzibar",
-    "1846 Guillain"
-  ];
+  var project = location.href.split(/\/+/)[3];
+  var project = project.split("?")[0];
   
-  maps.forEach(function(addmap) {
-    myBackgroundLayer =  new OpenLayers.Layer.WMS(addmap,
-      mappath, {
-        layers: addmap,
-        //opacities: layerOpacities(selectedLayers),
-        format: "image/jpg",
-        styles: "Black And White Print",
-        //transparent: qgisLayerTransparency,
-        //dpi: screenDpi,
-        VERSION: "1.3.0"
-      },
-      LayerOptions
-    );
+  if (project != 'Amsterdam') {
+    // Add Drone
+    var myBackgroundLayer = new OpenLayers.Layer.XYZ("Drone Imagery",
+      ["https://a.tiles.mapbox.com/v4/worldbank-education.o1dcg7e1/${z}/${x}/${y}.png?access_token=pk.eyJ1Ijoid29ybGRiYW5rLWVkdWNhdGlvbiIsImEiOiJIZ2VvODFjIn0.TDw5VdwGavwEsch53sAVxA"], {
+      sphericalMercator: true,
+      wrapDateLine: true,
+      isBaseLayer: true,
+    });
     baseLayers.push(myBackgroundLayer);
-  });
 
-//baseLayers.splice('MapQuest-OSM Tiles',1);
-// Remove MapQuest layers
-baseLayers.splice(1,1);
-baseLayers.splice(2,1);
+    // Add Historic Maps
+    // Path to map
+    var servername = location.href.split(/\/+/)[1];
+    mappath = "http://"+servername;
+    mappath += "/";
+    mappath += "/wms/NgamboHistoric";
 
-//unset(baseLayers['
-
+    maps = [
+      "1987 Zanzibar Plan",
+      "1973 Post Revolution Developments",
+      "1960 Land Surveys Zanzibar",
+      "1927 Zanzibar City Survey",
+      "1897 Baumann",
+      "1892 Plan of Zanzibar",
+      "1846 Guillain"
+    ];
+  
+    maps.forEach(function(addmap) {
+      myBackgroundLayer =  new OpenLayers.Layer.WMS(addmap,
+        mappath, {
+          layers: addmap,
+          format: "image/jpg",
+          styles: "Black And White Print",
+          transitionEffect:"resize",
+          VERSION: "1.3.0",
+          buffer:0,
+          singleTile:true,
+          ratio:1,
+        },
+        LayerOptions
+      );
+      baseLayers.push(myBackgroundLayer);
+    });
+  } // Only for not Amsterdam
+  else {
+    // Make Mapbox Light the basemap
+    initialBGMap = 0;
   }
-
+  // Remove MapQuest layers
+//  baseLayers.splice(1,1);
+  baseLayers.splice(2,1);
+  baseLayers.splice(2,1);
+  baseLayers.splice(2,1);
+  }
 }
 
 // called after map initialization
@@ -230,15 +243,19 @@ function customActionLayerTreeCheck(n) {
 function customActionOnZoomEvent() {
 	// NOTE: if you define customActionOnMoveEvent() (see below)
 	// that function is called during zooms, too!
-var permalink = createPermalink();
-history.replaceState(null, null, permalink);
-
 	// ... action to do on call
-}
+        // Maintain the Permanent URL in the addressbar for modern browsers
+        if (history.replaceState) {
+                var permalink = createPermalink();
+                history.replaceState(null, null, permalink);
+        }}
 
 // called after a drag, pan, or zoom completed
 function customActionOnMoveEvent() {
 	// ... action to do on call
-var permalink = createPermalink();
-history.replaceState(null, null, permalink);
+        // Maintain the Permanent URL in the addressbar for modern browsers
+        if (history.replaceState) {
+                var permalink = createPermalink();
+                history.replaceState(null, null, permalink);
+        }
 }

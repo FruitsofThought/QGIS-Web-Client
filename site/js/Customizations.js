@@ -106,7 +106,30 @@ function customBeforeMapInit() {
       isBaseLayer: true,
     });
     baseLayers.push(myBackgroundLayer);
+    // Add Drone #2
+    // As WMS service
+    // Path to map
+    var servername = location.href.split(/\/+/)[1];
+    mappath = "http://"+servername;
+    mappath += "/";
+    mappath += "/wms/Drone Imagery East of Michenzani";
 
+    myBackgroundLayer =  new OpenLayers.Layer.WMS("Drone Imagery East of Michenzani",
+        mappath, {
+          layers: "Drone Imagery East of Michenzani",
+          format: "image/jpg",
+          transitionEffect:"resize",
+          VERSION: "1.3.0",
+          buffer:0,
+          singleTile:true,
+          ratio:1,
+        },
+        LayerOptions
+      );
+      baseLayers.push(myBackgroundLayer);
+
+
+    
     // Add Historic Maps
     // Path to map
     var servername = location.href.split(/\/+/)[1];

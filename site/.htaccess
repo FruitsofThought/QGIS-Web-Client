@@ -1,0 +1,8 @@
+# Various rewrite rules.
+<IfModule mod_rewrite.c>
+  RewriteEngine on
+
+#  RewriteCond %{HTTP_HOST} ^qgisweb\.mappingday\.com [NC]
+#  RewriteRule ^ http://qgisweb.mountbatten.nl%{REQUEST_URI} [L,R=301]
+</IfModule>
+
